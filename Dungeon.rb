@@ -1,3 +1,5 @@
+require_relative 'Room'
+
 class Dungeon
     attr_accessor :player
     
@@ -21,5 +23,20 @@ class Dungeon
 
     def find_room_in_dungeon(reference)
         @rooms[reference]
+    end
+
+    def find_room_in_direction(direction)
+        find_room_in_dungeon(@player.location).connections[direction]
+    end
+
+    def go(direction)
+        if @rooms[direction] != nil
+            puts "You go " + direction.to_s
+            @player.location = find_room_in_direction(direction)
+            show_current_description
+        else
+            puts @rooms[direction]
+            puts "There is no room " + direction.to_s
+        end
     end
 end

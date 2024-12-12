@@ -16,3 +16,9 @@ dungeon.add_room(
   "Small Cave",
   "a small, claustrophobic cave",
   { :east => :largecave })
+
+# Start the dungeon by placing the player in the large cave
+dungeon.start(:largecave)
+dungeon.find_room_in_direction(:largecave)
+dungeon.go(:west)
+dungeon.go(:south)
